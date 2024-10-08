@@ -31,13 +31,12 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@v8
 
       - name: Build search
-        working-directory: demo
         run: nix build -L --override-input search ..
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: demo/result
+          path: result
 
   deploy:
     name: Deploy to GitHub Pages
