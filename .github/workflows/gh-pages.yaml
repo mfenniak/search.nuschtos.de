@@ -31,7 +31,7 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@v8
 
       - name: Build search
-        run: nix build -L --override-input search ..
+        run: nix build -L
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
