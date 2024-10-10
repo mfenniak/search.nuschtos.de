@@ -151,16 +151,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1728341712,
-        "narHash": "sha256-1cFvBLut3sRq/kcguhfraX/r94mdtC6gJ0IEXiUY924=",
-        "owner": "SuperSandro2000",
+        "lastModified": 1728588172,
+        "narHash": "sha256-wCLcOMOyiFHa4MfAT1SR8jj47GcmCXiR93kgFs38bVY=",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "05218a875fcb47dd69ee0b6c55294ea09a870ce2",
+        "rev": "8bb5d53c5847d9a9b2ad1bda49f9aa9df0de282a",
         "type": "github"
       },
       "original": {
-        "owner": "SuperSandro2000",
-        "ref": "nuschtos-search-options-json",
+        "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"
       }
