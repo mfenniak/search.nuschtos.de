@@ -5,9 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
-      # url = "github:nix-community/home-manager";
-      # https://github.com/nix-community/home-manager/pull/5942
-      url = "github:SuperSandro2000/home-manager/nuschtos-search-options-json";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     search = {
