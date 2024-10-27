@@ -2,44 +2,123 @@
   description = "Flake for search.nüschtos.de";
 
   inputs = {
+    authentik = {
+      url = "github:nix-community/authentik-nix";
+      inputs = {
+        flake-compat.follows = "";
+        flake-parts.follows = "flake-parts";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    crowdsec = {
+      url = "https://codeberg.org/kampka/nix-flake-crowdsec/archive/main.zip";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-compat.url = "github:nix-community/flake-compat";
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ifdyndnsd = {
+      url = "github:astro/ifdyndnsd";
+      inputs = {
+        fenix.follows = "fenix";
+        naersk.follows = "naersk";
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils";
+      };
+    };
     ifstate = {
       url = "git+https://codeberg.org/m4rc3l/ifstate.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs = {
+        flake-compat.follows = "";
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+        pre-commit-hooks-nix.follows = "";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
+    microvm = {
+      url = "github:astro/microvm.nix";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    naersk = {
+      url = "github:nix-community/naersk";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     nixos-apple-silicon = {
       url = "github:tpwrules/nixos-apple-silicon";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
+        flake-compat.follows = "";
+        rust-overlay.follows = "rust-overlay";
       };
     };
+    nixos-hardware.url = "github:nixos/nixos-hardware";
     nixos-modules = {
       url = "github:NuschtOS/nixos-modules";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        search.follows = "search";
         flake-utils.follows = "flake-utils";
+      };
+    };
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs = {
+        flake-compat.follows = "";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
       };
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs = {
-        flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
         home-manager.follows = "home-manager";
+        # TODO: add after nix-darwin got added
+        # nix-darwin.follows = "nix-darwin";
         nixpkgs.follows = "nixpkgs";
         nuschtosSearch.follows = "search";
+        # https://github.com/nix-community/nixvim/blob/main/flake.nix#L12-L34
+        devshell.follows = "";
+        flake-compat.follows = "";
+        git-hooks.follows = "";
+        treefmt-nix.follows = "";
+      };
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
       };
     };
     search = {
@@ -49,24 +128,82 @@
         flake-utils.follows = "flake-utils";
       };
     };
+    sflow-exporter = {
+      url = "github:dd-ix/sflow_exporter";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    simple-nixos-mailserver = {
+      url = "git+https://gitlab.com/simple-nixos-mailserver/nixos-mailserver.git";
+      inputs = {
+        flake-compat.follows = "";
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-24_05.follows = "nixpkgs";
+      };
+    };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-stable.follows = "nixpkgs";
+      };
+    };
+    ticker = {
+      url = "git+https://gitea.c3d2.de/astro/ticker.git";
+      inputs = {
+        fenix.follows = "fenix";
+        naersk.follows = "naersk";
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils";
+      };
+    };
+    tsnsrv = {
+      url = "github:boinkor-net/tsnsrv";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
-  outputs = { disko, flake-utils, home-manager, ifstate, nixos-apple-silicon, nixos-modules, nixpkgs, nixvim, search, ... }:
+  outputs = { authentik, crowdsec, disko, flake-utils, home-manager, ifdyndnsd, ifstate, lanzaboote, microvm, nixos-apple-silicon, nixos-hardware, nixos-modules, nixos-wsl, nixpkgs, nixvim, search, sflow-exporter, simple-nixos-mailserver, sops-nix, ticker, tsnsrv, ... }:
     flake-utils.lib.eachDefaultSystem
       (system:
         let
           pkgs = (import nixpkgs) {
             inherit system;
           };
+          inherit (pkgs) lib;
         in
         {
           packages = {
             default = search.packages.${system}.mkMultiSearch {
               scopes = [
+                # authentik
+                {
+                  modules = [
+                    authentik.nixosModules.default
+                    { _module.args = { inherit pkgs; }; }
+                  ];
+                  name = "authentik-nix";
+                  urlPrefix = "https://github.com/nix-community/authentik-nix/blob/main/";
+                }
+                # crowdsec
+                {
+                  modules = [
+                    crowdsec.nixosModules.crowdsec
+                    crowdsec.nixosModules.crowdsec-firewall-bouncer
+                    { _module.args = { inherit pkgs; }; }
+                  ];
+                  name = "crowdsec";
+                  urlPrefix = "https://codeberg.org/kampka/nix-flake-crowdsec/src/branch/main/";
+                }
                 # disko
                 {
                   modules = [ disko.nixosModules.default ];
-                  name = "Disko";
+                  name = "disko";
                   specialArgs.modulesPath = nixpkgs + "/nixos/modules";
                   urlPrefix = "https://github.com/nix-community/disko/blob/master/";
                 }
@@ -84,9 +221,38 @@
                 }
                 # ifstate.nix
                 {
-                  modules = [ ifstate.nixosModules.ifstate ];
+                  modules = [ ifstate.nixosModules.default ];
                   name = "IfState.nix";
                   urlPrefix = "https://codeberg.org/m4rc3l/ifstate.nix/src/branch/main/";
+                }
+                # ifdyndnsd
+                {
+                  modules = [
+                    ifdyndnsd.nixosModule
+                    { _module.args = { inherit pkgs; }; }
+                  ];
+                  name = "ifdyndnsd";
+                  urlPrefix = "https://github.com/astro/ifdyndnsd/blob/main/";
+                }
+                # lanzaboote
+                {
+                  modules = [
+                    lanzaboote.nixosModules.lanzaboote
+                    lanzaboote.nixosModules.uki
+                    { _module.args = { inherit pkgs; }; }
+                  ];
+                  name = "Lanzaboote";
+                  urlPrefix = "https://github.com/nix-community/lanzaboote/blob/master/";
+                }
+                # microvm.nix
+                {
+                  modules = [
+                    microvm.nixosModules.host
+                    microvm.nixosModules.microvm
+                    { _module.args = { inherit pkgs; }; }
+                  ];
+                  name = "MicroVM.nix";
+                  urlPrefix = "https://github.com/astro/microvm.nix/blob/main/";
                 }
                 # NixOS/nixpkgs
                 {
@@ -99,6 +265,15 @@
                   modules = [ nixos-apple-silicon.nixosModules.default ];
                   name = "NixOS Apple Silicon";
                   urlPrefix = "https://github.com/tpwrules/nixos-apple-silicon/blob/main/";
+                }
+                # nixos-hardware
+                {
+                  modules = [
+                    { _module.args = { inherit pkgs; }; }
+                  ] ++ lib.attrValues nixos-hardware.nixosModules;
+                  name = "nixos-hardware";
+                  specialArgs.modulesPath = pkgs.path + "/nixos/modules";
+                  urlPrefix = "https://github.com/NixOS/nixos-hardware/blob/master/";
                 }
                 # nixos-modules
                 {
@@ -115,12 +290,67 @@
                   name = "NixOS Modules";
                   urlPrefix = "https://github.com/NuschtOS/nixos-modules/tree/main/";
                 }
+                # NixOS-WSL
+                {
+                  modules = [
+                    nixos-wsl.nixosModules.default
+                    { _module.args = { inherit pkgs; }; }
+                  ];
+                  name = "Nixos-WSL";
+                  urlPrefix = "https://github.com/nix-community/NixOS-WSL/blob/main/";
+                }
                 # nixvim
                 {
                   optionsJSON = nixvim.packages.${system}.options-json + /share/doc/nixos/options.json;
                   optionsPrefix = "programs.nixvim";
                   name = "NixVim";
                   urlPrefix = "https://github.com/nix-community/nixvim/tree/main/";
+                }
+                # simple-nixos-mailserver
+                {
+                  modules = [
+                    simple-nixos-mailserver.nixosModules.default
+                    # based on https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/blob/290a995de5c3d3f08468fa548f0d55ab2efc7b6b/flake.nix#L61-73
+                    {
+                      mailserver = {
+                        fqdn = "mx.example.com";
+                        domains = [ "example.com" ];
+                        dmarcReporting = {
+                          organizationName = "Example Corp";
+                          domain = "example.com";
+                        };
+                      };
+                    }
+                  ];
+                  name = "simple-nixos-mailserver";
+                  urlPrefix = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/blob/master/";
+                }
+                # sflow-exporter
+                {
+                  modules = [ sflow-exporter.nixosModules.default ];
+                  name = "sflow_exporter";
+                  urlPrefix = "https://github.com/dd-ix/sflow_exporter/tree/main/";
+                }
+                # sops-nix
+                {
+                  modules = [ sops-nix.nixosModules.default ];
+                  name = "sops-nix";
+                  urlPrefix = "https://github.com/Mic92/sops-nix/blob/master/";
+                }
+                # ticker
+                {
+                  modules = [ ticker.nixosModules.default ];
+                  name = "ticker";
+                  urlPrefix = "https://gitea.c3d2.de/astro/ticker/src/branch/master/";
+                }
+                # tsnsrv
+                {
+                  modules = [
+                    tsnsrv.nixosModules.default
+                    { _module.args = { inherit pkgs; }; }
+                  ];
+                  name = "tsnsrv";
+                  urlPrefix = "https://github.com/boinkor-net/tsnsrv/blob/main/";
                 }
               ];
             };
