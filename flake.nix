@@ -22,10 +22,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -34,15 +30,6 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    ifdyndnsd = {
-      url = "github:astro/ifdyndnsd";
-      inputs = {
-        fenix.follows = "fenix";
-        naersk.follows = "naersk";
-        nixpkgs.follows = "nixpkgs";
-        utils.follows = "flake-utils";
-      };
     };
     ifstate = {
       url = "git+https://codeberg.org/m4rc3l/ifstate.nix";
@@ -65,12 +52,6 @@
       url = "github:astro/microvm.nix";
       inputs = {
         flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-    naersk = {
-      url = "github:nix-community/naersk";
-      inputs = {
         nixpkgs.follows = "nixpkgs";
       };
     };
@@ -128,13 +109,6 @@
         flake-utils.follows = "flake-utils";
       };
     };
-    sflow-exporter = {
-      url = "github:dd-ix/sflow_exporter";
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
     simple-nixos-mailserver = {
       url = "git+https://gitlab.com/simple-nixos-mailserver/nixos-mailserver.git";
       inputs = {
@@ -150,15 +124,6 @@
         nixpkgs-stable.follows = "nixpkgs";
       };
     };
-    ticker = {
-      url = "git+https://gitea.c3d2.de/astro/ticker.git";
-      inputs = {
-        fenix.follows = "fenix";
-        naersk.follows = "naersk";
-        nixpkgs.follows = "nixpkgs";
-        utils.follows = "flake-utils";
-      };
-    };
     tsnsrv = {
       url = "github:boinkor-net/tsnsrv";
       inputs = {
@@ -168,7 +133,7 @@
     };
   };
 
-  outputs = { authentik, crowdsec, disko, flake-utils, home-manager, ifdyndnsd, ifstate, lanzaboote, microvm, nixos-apple-silicon, nixos-hardware, nixos-modules, nixos-wsl, nixpkgs, nixvim, search, sflow-exporter, simple-nixos-mailserver, sops-nix, ticker, tsnsrv, ... }:
+  outputs = { authentik, crowdsec, disko, flake-utils, home-manager, ifstate, lanzaboote, microvm, nixos-apple-silicon, nixos-hardware, nixos-modules, nixos-wsl, nixpkgs, nixvim, search, simple-nixos-mailserver, sops-nix, tsnsrv, ... }:
     flake-utils.lib.eachDefaultSystem
       (system:
         let
@@ -224,15 +189,6 @@
                   modules = [ ifstate.nixosModules.default ];
                   name = "IfState.nix";
                   urlPrefix = "https://codeberg.org/m4rc3l/ifstate.nix/src/branch/main/";
-                }
-                # ifdyndnsd
-                {
-                  modules = [
-                    ifdyndnsd.nixosModule
-                    { _module.args = { inherit pkgs; }; }
-                  ];
-                  name = "ifdyndnsd";
-                  urlPrefix = "https://github.com/astro/ifdyndnsd/blob/main/";
                 }
                 # lanzaboote
                 {
@@ -325,23 +281,11 @@
                   name = "simple-nixos-mailserver";
                   urlPrefix = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/blob/master/";
                 }
-                # sflow-exporter
-                {
-                  modules = [ sflow-exporter.nixosModules.default ];
-                  name = "sflow_exporter";
-                  urlPrefix = "https://github.com/dd-ix/sflow_exporter/tree/main/";
-                }
                 # sops-nix
                 {
                   modules = [ sops-nix.nixosModules.default ];
                   name = "sops-nix";
                   urlPrefix = "https://github.com/Mic92/sops-nix/blob/master/";
-                }
-                # ticker
-                {
-                  modules = [ ticker.nixosModules.default ];
-                  name = "ticker";
-                  urlPrefix = "https://gitea.c3d2.de/astro/ticker/src/branch/master/";
                 }
                 # tsnsrv
                 {
