@@ -117,11 +117,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730074366,
-        "narHash": "sha256-u8aVS/u/CSOt4M+VEdFNiVRZt1YsM00i7sF8OVDGi6Q=",
-        "rev": "54ec36a05d01e506b789fd4b5b825a3012bf7a22",
+        "lastModified": 1733481211,
+        "narHash": "sha256-J5w71KqekOE0BoDGtLQN2hnfMkXDjhC8zQr4vp6l6Ok=",
+        "rev": "c11c1a2d422c24f90a1db6cbc97b16784b3d8010",
         "type": "tarball",
-        "url": "https://codeberg.org/api/v1/repos/kampka/nix-flake-crowdsec/archive/54ec36a05d01e506b789fd4b5b825a3012bf7a22.tar.gz"
+        "url": "https://codeberg.org/api/v1/repos/kampka/nix-flake-crowdsec/archive/c11c1a2d422c24f90a1db6cbc97b16784b3d8010.tar.gz"
       },
       "original": {
         "type": "tarball",
