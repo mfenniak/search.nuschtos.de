@@ -45,15 +45,16 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1732215451,
-        "narHash": "sha256-P2VVlzRGKBNsiHsN1yMZcSMXpwtIx9ysMFZAqKFJ14o=",
-        "owner": "nix-community",
+        "lastModified": 1733476971,
+        "narHash": "sha256-zjaIq5QGbcnzcVnH5hY+YaQM+v6JGkBtvx4pJ3Vx23s=",
+        "owner": "MarcelCoding",
         "repo": "authentik-nix",
-        "rev": "9d9c0a3a94a91cfed654a18239e27cf56970daa4",
+        "rev": "9107922274ef82d427f6494c120db1806c861ea4",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "MarcelCoding",
+        "ref": "fix-doc",
         "repo": "authentik-nix",
         "type": "github"
       }
