@@ -261,7 +261,7 @@
                 {
                   modules = [
                     { _module.args = { inherit pkgs; }; }
-                  ] ++ lib.attrValues nixos-hardware.nixosModules;
+                  ] ++ lib.filter (x: (builtins.tryEval(x)).success) (lib.attrValues nixos-hardware.nixosModules);
                   name = "nixos-hardware";
                   specialArgs.modulesPath = pkgs.path + "/nixos/modules";
                   urlPrefix = "https://github.com/NixOS/nixos-hardware/blob/master/";
