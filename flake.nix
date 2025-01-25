@@ -11,10 +11,7 @@
       };
     };
     authentik = {
-      # TODO: switch back to nix-community
-      # https://github.com/nix-community/authentik-nix/pull/39
-      # url = "github:nix-community/authentik-nix";
-      url = "github:MarcelCoding/authentik-nix/fix-doc";
+      url = "github:nix-community/authentik-nix";
       inputs = {
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
