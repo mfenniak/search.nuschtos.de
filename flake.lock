@@ -45,16 +45,15 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1733476971,
-        "narHash": "sha256-zjaIq5QGbcnzcVnH5hY+YaQM+v6JGkBtvx4pJ3Vx23s=",
-        "owner": "MarcelCoding",
+        "lastModified": 1737810234,
+        "narHash": "sha256-zTS99/ZE8khNnIWFEsF21E6seR9IizGYkY19t6iK7z4=",
+        "owner": "nix-community",
         "repo": "authentik-nix",
-        "rev": "9107922274ef82d427f6494c120db1806c861ea4",
+        "rev": "1fa3cbed36fb03d2f6ceab981d083af98b5c7d0f",
         "type": "github"
       },
       "original": {
-        "owner": "MarcelCoding",
-        "ref": "fix-doc",
+        "owner": "nix-community",
         "repo": "authentik-nix",
         "type": "github"
       }
@@ -62,16 +61,16 @@
     "authentik-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1732213300,
-        "narHash": "sha256-4Pv35cnZGiTxe6j2O0F9L9sHzxVIC1SazeAUD5kWeBs=",
+        "lastModified": 1736440980,
+        "narHash": "sha256-Z3rFFrXrOKaF9NpY/fInsEbzdOWnWqLfEYl7YX9hFEU=",
         "owner": "goauthentik",
         "repo": "authentik",
-        "rev": "527e584699abc93712114b05f70f59c5187caa66",
+        "rev": "9d81f0598c7735e2b4616ee865ab896056a67408",
         "type": "github"
       },
       "original": {
         "owner": "goauthentik",
-        "ref": "version/2024.10.4",
+        "ref": "version/2024.12.2",
         "repo": "authentik",
         "type": "github"
       }
@@ -544,11 +543,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1730284601,
-        "narHash": "sha256-eHYcKVLIRRv3J1vjmxurS6HVdGphB53qxUeAkylYrZY=",
+        "lastModified": 1736884309,
+        "narHash": "sha256-eiCqmKl0BIRiYk5/ZhZozwn4/7Km9CWTbc15Cv+VX5k=",
         "owner": "nix-community",
         "repo": "poetry2nix",
-        "rev": "43a898b4d76f7f3f70df77a2cc2d40096bc9d75e",
+        "rev": "75d0515332b7ca269f6d7abfd2c44c47a7cbca7b",
         "type": "github"
       },
       "original": {
