@@ -216,7 +216,6 @@
                 {
                   modules = [
                     lanzaboote.nixosModules.lanzaboote
-                    lanzaboote.nixosModules.uki
                     { _module.args = { inherit pkgs; }; }
                   ];
                   name = "Lanzaboote";
