@@ -98,15 +98,8 @@
       url = "github:nix-community/nixvim";
       inputs = {
         flake-parts.follows = "flake-parts";
-        home-manager.follows = "home-manager";
-        nix-darwin.follows = "nix-darwin";
         nixpkgs.follows = "nixpkgs";
         nuschtosSearch.follows = "search";
-        # https://github.com/nix-community/nixvim/blob/main/flake.nix#L12-L34
-        devshell.follows = "";
-        flake-compat.follows = "";
-        git-hooks.follows = "";
-        treefmt-nix.follows = "";
       };
     };
     rust-overlay = {
@@ -216,7 +209,6 @@
                 {
                   modules = [
                     lanzaboote.nixosModules.lanzaboote
-                    lanzaboote.nixosModules.uki
                     { _module.args = { inherit pkgs; }; }
                   ];
                   name = "Lanzaboote";
@@ -253,7 +245,11 @@
                 # nixos-hardware
                 {
                   modules = [
-                    { _module.args = { inherit pkgs; }; }
+                    {
+                      _module.args = { inherit pkgs; };
+
+                      hardware.rockchip.platformFirmware = pkgs.hello; # fake that the package is missing on stable
+                    }
                   ] ++ lib.filter (x: (builtins.tryEval (x)).success) (lib.attrValues nixos-hardware.nixosModules);
                   name = "nixos-hardware";
                   specialArgs.modulesPath = pkgs.path + "/nixos/modules";
