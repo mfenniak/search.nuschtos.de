@@ -245,7 +245,11 @@
                 # nixos-hardware
                 {
                   modules = [
-                    { _module.args = { inherit pkgs; }; }
+                    {
+                      _module.args = { inherit pkgs; };
+
+                      hardware.rockchip.platformFirmware = pkgs.hello; # fake that the package is missing on stable
+                    }
                   ] ++ lib.filter (x: (builtins.tryEval (x)).success) (lib.attrValues nixos-hardware.nixosModules);
                   name = "nixos-hardware";
                   specialArgs.modulesPath = pkgs.path + "/nixos/modules";
