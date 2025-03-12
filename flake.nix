@@ -98,15 +98,8 @@
       url = "github:nix-community/nixvim";
       inputs = {
         flake-parts.follows = "flake-parts";
-        home-manager.follows = "home-manager";
-        nix-darwin.follows = "nix-darwin";
         nixpkgs.follows = "nixpkgs";
         nuschtosSearch.follows = "search";
-        # https://github.com/nix-community/nixvim/blob/main/flake.nix#L12-L34
-        devshell.follows = "";
-        flake-compat.follows = "";
-        git-hooks.follows = "";
-        treefmt-nix.follows = "";
       };
     };
     rust-overlay = {
