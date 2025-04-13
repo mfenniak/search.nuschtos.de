@@ -5,10 +5,6 @@
     "default:pinDigestsDisabled",
     "mergeConfidence:all-badges"
   ],
-  "assignees": [
-    "MarcelCoding",
-    "SuperSandro2000"
-  ],
   "dependencyDashboardOSVVulnerabilitySummary": "all",
   "nix": {
     "enabled": true
