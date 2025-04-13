@@ -21,8 +21,5 @@
     }
   ],
   "prHourlyLimit": 0,
-  "schedule": [
-    "before 12am on sunday"
-  ],
   "semanticCommits": "disabled"
 }
