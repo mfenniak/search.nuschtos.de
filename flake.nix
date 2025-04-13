@@ -27,7 +27,7 @@
       };
     };
     disko = {
-      url = "github:nix-community/disko";
+      url = "github:nix-community/disko/329d3d7e8bc63dd30c39e14e6076db590a6eabe6";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
